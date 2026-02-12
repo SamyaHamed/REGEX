@@ -17,7 +17,11 @@ and
 """
 
 TEXT1 = "This is is a test test string and and another test."
-PATTERN1 = r"([a-zA-Z]+)"
+PATTERN1 = r"\b([a-zA-Z]+)\s+\1\b"
+print("result1 :")
+matches = re.findall(PATTERN1, TEXT1, flags=re.IGNORECASE)
+print(matches)
+
 
 """
 Exercise 2 — Extract valid hashtags
@@ -117,10 +121,17 @@ Expected Output:
 
 first
 second value
+nested
 
 
 Hint: Use non-greedy quantifiers.
 """
+
+TEXT5 = "Example (first) and (second value) but not (third (nested))"
+PATTERN5 = r"\(([^()]+)\)"
+print("result5:")
+for match in re.finditer(PATTERN5, TEXT5):
+    print(match.group(1))
 
 
 """
@@ -146,3 +157,9 @@ Expected Output:
 100
 5.5
 """
+
+TEXT7 = "Price: $45.99, $100, and $5.5 but not 45.99 or $abc"
+PATTERN7 = r"\$(\d+\.?\d+)"
+print("result7 :")
+result7 = re.findall(PATTERN7, TEXT7)
+print(result7)

@@ -6,18 +6,21 @@ import re
 TEXT = "Contact us at support@gmail.com or sales@company.org for more info.Call 059-123-4567 or 056-999-8888 now!"
 PATTERN1 = r"[\w\.-]+@[\w\.-]+\.\w+"
 emails = re.findall(PATTERN1, TEXT)
+print("#1")
 print(emails)
 
 
 # 2:
 PATTERN2 = r"\d+\-\d+\-\d+"
 number = re.findall(PATTERN2, TEXT)
+print("#2")
 print(number)
 
 # 3
 TEXT2 = "My score is 95 and yours is 88."
 PATTERN3 = r"\d+"
 new_text = re.sub(PATTERN3, " ", TEXT2)
+print("#3")
 print(new_text)
 
 # 4
@@ -26,12 +29,14 @@ TEXT4 = "Hello123"
 PATTERN4 = r"[A-Za-z]+"
 r1 = bool(re.fullmatch(PATTERN4, TEXT3))
 r2 = bool(re.fullmatch(PATTERN4, TEXT4))
+print("#4")
 print(f"r1 = {r1}", f"r2= {r2}")
 
 
 # 5
 TEXT5 = "Files: report.pdf image.png script.py"
 PATTERN5 = r"[a-z]+\.[a-z]+"
+print("#5")
 for result in re.finditer(PATTERN5, TEXT5):
     print(result.group())
 
@@ -39,12 +44,21 @@ for result in re.finditer(PATTERN5, TEXT5):
 TEXT6 = "Today is 2026-02-11"
 PATTERN6 = r"(\d{4})-(\d{2})-(\d{2})"
 new_text6 = re.sub(PATTERN6, r"\3/\2/\1", TEXT6)
+print("#6")
 print(new_text6)
 
 
 # 7
 HTML = "<html><title>My Website</title></html>"
 title_search = re.search(r"<title>(.*)</title>", HTML, re.IGNORECASE)
+print("#7")
 if title_search:
     title = title_search.group(1)
     print(title)
+
+# 8
+TEXT7 = 'He said "hello" "hello" and then "bye" "bye".'
+PATTERN7 = r"(\"(\w+)\")"
+print("#8")
+for match in re.finditer(PATTERN7, TEXT7):
+    print(match.group(2))
